@@ -1,0 +1,47 @@
+.categorias{
+    height: 70vh;
+}
+
+.category-name{
+    font-size: 4.2rem;
+    color: #4E1784;
+    text-shadow: 2px 2px 5px black;
+}
+
+@media screen and (max-width: 656px) {
+
+    .category-name{
+        font-size: 3vh
+    }
+}
+
+.card{
+    background-color: #F5ECFF !important;
+    border: none !important; 
+    transition: 0.2s;
+}
+.card:hover{
+    transform: scale(1.02);
+}
+
+.img-card{
+    background-size: cover;
+    height: 45rem !important;
+    margin-left: -10px;
+    margin-right: -1.4vh;
+}
+
+.bi{
+    color: #F5ECFF;
+    left: 85%;
+    margin-top: .7vh;
+    transform: scale(2);
+    position: absolute;
+    cursor: pointer;
+}
+
+.botao-add{
+    position: absolute !important;
+    bottom: 8%;
+    left: 3%;
+}

@@ -1,0 +1,30 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
+
+# Disable directory browsing
+Options All -Indexes
+
+# Block access to hidden files and directories
+<Files .*>
+    Order Deny,Allow
+    Deny from all
+</Files>
+
+# Prevent access to system and application directories
+<IfModule mod_rewrite.c>
+    RewriteRule ^(application|system|\.svn) index.php/$1 [L]
+</IfModule>
+
+# Add headers to prevent browser caching
+<IfModule mod_headers.c>
+    Header set Cache-Control "no-store, no-cache, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+</IfModule>
+
+# Enable gzip compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+</IfModule>

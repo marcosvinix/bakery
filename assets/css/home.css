@@ -1,0 +1,41 @@
+.card-1{
+    border: none !important;
+    outline: none !important;
+    background-color: #F5ECFF !important;
+    min-height: 75vh;
+}
+
+.pins{
+    outline: none !important;
+    border: none !important;
+    background-color: #F5ECFF !important;
+}
+
+.card{
+    padding: 0 !important;
+}
+
+.card h3{
+    color: white;
+}
+
+.card-header{
+    background-color: #4E1784 !important; 
+}
+
+.notes-header{
+    align-items: center;
+    justify-content: space-between;
+}
+
+.notes-header i{
+    cursor: pointer;
+    color: white;
+    transform: scale(1.6);
+}
+
+.swiper {
+    width: 100%;
+    height: 21vh !important;
+    
+  }

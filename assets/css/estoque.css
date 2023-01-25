@@ -1,0 +1,21 @@
+.card-estoque{
+    margin-top: 2vh !important;
+    height: 75vh !important;
+    background-color: #F5ECFF !important;
+    outline: none !important;
+    border: none !important;
+}
+
+.estoque-lista{
+    overflow-y: scroll;
+    height: 67vh;
+    
+}
+
+.btn{
+    background-color: #4E1784 !important;
+    outline: none !important;
+    border: none !important;
+    width: 40vh !important;
+    height: 7vh !important;
+}
