@@ -17,72 +17,38 @@ class categorias extends CI_Controller {
 
 	} 
 
-	public function r($categoria)
+	public function r($categoria,$receita = null)
 	{
+		$this->load->database();
+		$this->load->model('bd_padaria');
 
-		if($categoria == 'paes'){
-			
-			$data["title"] = "Pães";
-		
+		if($receita == null){
+
+			$data["title"] = $categoria;
+
+			$category_id = $this->bd_padaria->get_category_id($categoria);
+			$data['receitas'] = $this->bd_padaria->get_receitas($category_id);
+	
 			$this->load->helper('url');
 			$this->load->view('components/navbar');
 			$this->load->view('components/header', $data);
-
+			$this->load->view('receitas', $data);
 		}
-		if($categoria == 'bolos'){
+
+			if($receita != null){
+
+				$data['title'] = urldecode($receita);
+				$data['recipe'] = $this->bd_padaria->get_receita(urldecode($receita));
+				$data['ingredients'] = $this->bd_padaria->get_ingredients($data['recipe'][0]->id_receita);
+
+				$this->load->helper('url');
+				$this->load->view('components/navbar');
+				$this->load->view('components/header', $data);
+				$this->load->view('receita', $data);
+				
+			}
 			
-			$data["title"] = "Bolos";
-		
-			$this->load->helper('url');
-			$this->load->view('components/navbar');
-			$this->load->view('components/header', $data);
 
-		}
-		if($categoria == 'salgados'){
-			
-			$data["title"] = "Salgados";
-		
-			$this->load->helper('url');
-			$this->load->view('components/navbar');
-			$this->load->view('components/header', $data);
-
-		}
-		if($categoria == 'folhados'){
-			
-			$data["title"] = "Folhados";
-		
-			$this->load->helper('url');
-			$this->load->view('components/navbar');
-			$this->load->view('components/header', $data);
-
-		}
-		if($categoria == 'doces'){
-			
-			$data["title"] = "Docês";
-		
-			$this->load->helper('url');
-			$this->load->view('components/navbar');
-			$this->load->view('components/header', $data);
-
-		}
-		if($categoria == 'bebidas'){
-			
-			$data["title"] = "Bebidas";
-		
-			$this->load->helper('url');
-			$this->load->view('components/navbar');
-			$this->load->view('components/header', $data);
-
-		}
-		if($categoria == 'outros'){
-			
-			$data["title"] = "Outros";
-		
-			$this->load->helper('url');
-			$this->load->view('components/navbar');
-			$this->load->view('components/header', $data);
-
-		}
 	}
 
 }

@@ -20,17 +20,17 @@
 
             <div class="itens d-flex text-center nav-column-itens">
 
-                <a href="categorias">
+                <a href="/p/categorias">
                     <img class="nav-btn" draggable="false" src="<?php echo base_url('assets/images/list.png'); ?>">
                 </a>
 
                 
-                <a href="home">
+                <a href="/p/home">
                     <img class="nav-btn" draggable="false" src="<?php echo base_url('assets/images/home.png'); ?>">
                 </a>
                 
 
-                <a href="estoque">
+                <a href="/p/estoque">
                     <img class="nav-btn" draggable="false" src="<?php echo base_url('assets/images/box.png'); ?>">
                 </a>
 
