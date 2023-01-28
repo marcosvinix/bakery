@@ -52,13 +52,9 @@
 						 <div class="card pins">
 							 <div class="card-header d-flex notes-header">
 								 <h3>Anotações</h3>
-
-								 <i class="bi bi-plus-circle-fill"></i>
 							 </div>
 							 <div class="card-body">
-								 <p>ok</p>
-								 <p>ok</p>
-								 <p>ok</p>
+								 <textarea name="anotacao" id="note" cols="30" rows="10" placeholder="Adicione suas anotações aqui..."></textarea>
 							 </div>
 						 </div>
 					 </div>

@@ -31,4 +31,21 @@ class bd_padaria extends CI_Model {
         return $query->result();
     }
 
+    public function get_img($image_id) {
+        $this->db->select('nome_imagem');
+        $this->db->from('imagens');
+        $this->db->where('id_imagem', $image_id);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function get_favoritas(){
+        $this->db->select('*');
+        $this->db->from('receitas');
+        $this->db->where('favorita', 1);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+
 }

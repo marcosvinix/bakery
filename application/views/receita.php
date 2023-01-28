@@ -8,7 +8,7 @@
 
     <div class="row mt-5">
         <div class="col-6">
-            <img src="https://www.livrariaarteeciencia.com.br//assets/images/placeholder.png" width="100%"  alt="">
+            <img src="<?php print_r($imagem[0]->nome_imagem); ?>" width="100%"  alt="">
             <button class="btn btn-success mt-3" data-bs-toggle="modal" data-bs-target="#ingredientesReceita" style="width: 100%; height: 5vh; background-color: #4e1784; outline: none; border: none;">Preparar Receita</button>
         </div>
 

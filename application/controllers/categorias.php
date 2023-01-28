@@ -40,6 +40,7 @@ class categorias extends CI_Controller {
 				$data['title'] = urldecode($receita);
 				$data['recipe'] = $this->bd_padaria->get_receita(urldecode($receita));
 				$data['ingredients'] = $this->bd_padaria->get_ingredients($data['recipe'][0]->id_receita);
+				$data['imagem'] = $this->bd_padaria->get_img($data['recipe'][0]->id_imagem);
 
 				$this->load->helper('url');
 				$this->load->view('components/navbar');
