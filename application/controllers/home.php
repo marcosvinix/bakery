@@ -13,8 +13,6 @@ class home extends CI_Controller {
 		$data["title"] = "Home";
 		$data["favoritas"] = $this->bd_padaria->get_favoritas();
 
-		print_r($data['favoritas']);
-
 		$this->load->helper('url');
 		$this->load->view('components/navbar');
 		$this->load->view('components/header', $data);
