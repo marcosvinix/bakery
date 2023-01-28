@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27-Jan-2023 às 11:48
+-- Tempo de geração: 28-Jan-2023 às 02:40
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 7.4.27
 
@@ -70,7 +70,7 @@ CREATE TABLE `estoque` (
   `id_produto` int(11) NOT NULL,
   `descricao_produto_estoque` varchar(100) NOT NULL,
   `quantidade_disponivel` int(11) DEFAULT NULL,
-  `validade_lote` date DEFAULT NULL,
+  `validade_lote` varchar(10) DEFAULT NULL,
   `tipo_produto` varchar(50) DEFAULT NULL,
   `medida_produto_estoque` varchar(10) DEFAULT NULL,
   `quantidade_minima_produto` int(11) DEFAULT NULL,
@@ -78,6 +78,35 @@ CREATE TABLE `estoque` (
   `ignorado` int(11) DEFAULT NULL,
   `id_funcionario` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `estoque`
+--
+
+INSERT INTO `estoque` (`id_produto`, `descricao_produto_estoque`, `quantidade_disponivel`, `validade_lote`, `tipo_produto`, `medida_produto_estoque`, `quantidade_minima_produto`, `quantidade_maxima_produto`, `ignorado`, `id_funcionario`) VALUES
+(1, 'farinha de trigo', 10000, '10/12/2023', 'grão', 'grama', 1, 10000, 0, 1),
+(2, 'açúcar', 10000, '10/12/2023', 'grão', 'grama', 1, 10000, 0, 1),
+(3, 'cacau em pó', 10000, '10/12/2023', 'grão', 'grama', 1, 10000, 0, 1),
+(4, 'fermento em pó', 10000, '10/12/2023', 'grão', 'grama', 1, 10000, 0, 1),
+(5, 'sal', 10000, '10/12/2023', 'grão', 'grama', 1, 10000, 0, 1),
+(6, 'bicarbonato de sódio', 10000, '10/12/2023', 'grão', 'grama', 1, 10000, 0, 1),
+(7, 'ovos', 10000, '10/12/2023', 'proteina', 'grama', 1, 10000, 0, 1),
+(8, 'óleo', 10000, '10/12/2023', 'líquido', 'grama', 1, 10000, 0, 1),
+(9, 'água', 10000, '10/12/2023', 'líquido', 'grama', 1, 10000, 0, 1),
+(10, 'essência de chocolate', 10000, '10/12/2023', 'grão', 'grama', 1, 10000, 0, 1),
+(11, 'nozes', 10000, '10/12/2023', 'grão', 'grama', 1, 10000, 0, 1),
+(12, 'polvinho doce', 10000, '10/12/2023', 'grão', 'grama', 1, 10000, 0, 1),
+(13, 'queijo minas', 10000, '10/12/2023', 'laticínios', 'grama', 1, 10000, 0, 1),
+(14, 'leite', 10000, '10/12/2023', 'laticínios', 'grama', 1, 10000, 0, 1),
+(15, 'manteiga', 10000, '10/12/2023', 'laticínios', 'grama', 1, 10000, 0, 1),
+(16, 'maçâ', 10000, '10/12/2023', 'fruta', 'grama', 1, 10000, 0, 1),
+(17, 'biscoito maisena', 10000, '10/12/2023', 'biscoito', 'grama', 1, 10000, 0, 1),
+(18, 'açúcar refinado', 10000, '10/12/2023', 'grão', 'grama', 1, 10000, 0, 1),
+(19, 'canela', 10000, '10/12/2023', 'grão', 'grama', 1, 10000, 0, 1),
+(20, 'limão', 10000, '10/12/2023', 'fruta', 'grama', 1, 10000, 0, 1),
+(21, 'leite condensado', 10000, '10/12/2023', 'creme', 'grama', 1, 10000, 0, 1),
+(22, 'creme de leite', 10000, '10/12/2023', 'creme', 'grama', 1, 10000, 0, 1),
+(23, 'baunilha', 10000, '10/12/2023', 'grão', 'grama', 1, 10000, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -101,8 +130,18 @@ CREATE TABLE `funcionarios` (
 
 CREATE TABLE `imagens` (
   `id_imagem` int(11) NOT NULL,
-  `nome_imagem` varchar(100) NOT NULL
+  `nome_imagem` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `imagens`
+--
+
+INSERT INTO `imagens` (`id_imagem`, `nome_imagem`) VALUES
+(1, 'https://st.depositphotos.com/3033681/4909/i/450/depositphotos_49093343-stock-photo-brazilian-snack-cheese-bread-pao.jpg%27'),
+(2, 'https://www.sabornamesa.com.br/media/k2/items/cache/f3fa6960b52e3c842fd94fee5eb122ab_XL.jpg%27'),
+(3, 'https://st3.depositphotos.com/1364913/34805/i/450/depositphotos_348057150-stock-photo-berliner-doughnuts-fresh-made-detailed.jpg%27'),
+(4, 'https://st4.depositphotos.com/4489936/24733/i/450/depositphotos_247333854-stock-photo-mini-cornbread-muffins-cooling-tray.jpg%27');
 
 -- --------------------------------------------------------
 
@@ -131,7 +170,19 @@ INSERT INTO `ingredientes` (`id_ingrediente`, `nome`, `porcentagem`) VALUES
 (8, 'óleo', '100'),
 (9, 'água', '100'),
 (10, 'essência de chocolate', '10'),
-(11, 'nozes', '20');
+(11, 'nozes', '20'),
+(12, 'polvinho doce', '100'),
+(13, 'queijo minas', '100'),
+(14, 'leite', '100'),
+(15, 'manteiga', '100'),
+(16, 'maçâ', '100'),
+(17, 'bolacha maisena', '100'),
+(18, 'açúcar refinado', '100'),
+(19, 'canela', '100'),
+(20, 'limão', '100'),
+(21, 'leite condensado', '100'),
+(22, 'creme de leite', '100'),
+(23, 'baunilha', '100');
 
 -- --------------------------------------------------------
 
@@ -145,35 +196,36 @@ CREATE TABLE `receitas` (
   `instrucoes_receita` varchar(500) NOT NULL,
   `rendimento` int(11) NOT NULL,
   `categoria` int(11) NOT NULL,
-  `id_imagem` int(11) DEFAULT NULL
+  `id_imagem` int(11) DEFAULT NULL,
+  `favorita` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `receitas`
 --
 
-INSERT INTO `receitas` (`id_receita`, `nome_receita`, `instrucoes_receita`, `rendimento`, `categoria`, `id_imagem`) VALUES
-(2, 'Pão de Queijo', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture o polvilho, o queijo e o sal. 3. Adicione o óleo e o leite, e misture até formar uma massa homogênea. 4. Faça pequenas bolas da massa e coloque-as em uma assadeira untada. 5. Leve ao forno por 15-20 minutos.', 12, 1, 9),
-(3, 'Bolo de Laranja', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Despeje a massa em uma forma untada e enfarinhada. 5. Leve ao forno por 25-30 minutos.', 8, 2, 10),
-(4, 'Pão de Forma', '1. Em uma tigela, misture a água, o açúcar, o óleo, o sal e a farinha de trigo. 2. Adicione o fermento e misture bem. 3. Deixe a massa descansar por 30 minutos. 4. Faça as formas dos pães e coloque-os em uma assadeira untada. 5. Leve ao forno por 25-30 minutos.', 12, 1, 11),
-(5, 'Torta de Limão', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Despeje a massa em uma forma untada e enfarinhada. 5. Leve ao forno por 25-30 minutos.', 8, 7, 12),
-(6, 'Bolo de Morango', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Despeje a massa em uma forma untada e enfarinhada. 5. Leve ao for no por 25-30 minutos e adicione os morangos no final.', 8, 2, 13),
-(7, 'Croissant recheado', '1. Abra a massa folhada em um retângulo. 2. Faça cortes triangulares na massa, começando do canto superior esquerdo até o canto inferior direito. 3. Enrole cada triângulo a partir da base larga até a ponta. 4. Deixe os croissants descansarem por 30 minutos antes de assar. 5. Leve ao forno por 15-20 minutos.', 12, 4, 14),
-(8, 'Bolo de Cenoura', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Despeje a massa em uma forma untada e enfarinhada. 5. Leve ao forno por 25-30 minutos.', 8, 2, 15),
-(9, 'Pão de Açúcar', '1. Em uma tigela, misture a água, o açúcar, o óleo, o sal e a farinha de trigo. 2. Adicione o fermento e misture bem. 3. Deixe a massa descansar por 30 minutos. 4. Faça as formas dos pães e coloque-os em uma assadeira untada. 5. Leve ao forno por 25-30 minutos e polvilhe açúcar de confeiteiro antes de servir.', 12, 1, 16),
-(10, 'Bolo de Banana', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4 . Adicione as bananas amassadas e misture novamente. 5. Despeje a massa em uma forma untada e enfarinhada. 6. Leve ao forno por 25-30 minutos.', 8, 2, 17),
-(11, 'Pão de Queijo', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture a farinha de mandioca, o queijo ralado, o leite e o sal. 3. Adicione a gema e misture novamente. 4. Faça as formas dos pães e coloque-os em uma assadeira untada. 5. Leve ao forno por 15-20 minutos.', 12, 1, 18),
-(12, 'Bolo de Chocolate', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Adicione o chocolate derretido e misture novamente. 5. Despeje a massa em uma forma untada e enfarinhada. 6. Leve ao forno por 25-30 minutos.', 8, 2, 19),
-(13, 'Pão de Forma', '1. Em uma tigela, misture a água, o açúcar, o óleo, o sal e a farinha de trigo. 2. Adicione o fermento e misture bem. 3. Deixe a massa descansar por 30 minutos. 4. Faça a forma do pão e coloque-o em uma assadeira untada. 5. Leve ao forno por 25-30 minutos.', 8, 1, 20),
-(14, 'Bolo de Laranja', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Adicione o suco de laranja e misture novamente. 5. Despeje a massa em uma forma untada e enfarinhada. 6. Leve ao forno por 25-30 minutos.', 8, 2, 21),
-(15, 'Pão de Milho', '1. Em uma tigela, misture a água, o açúcar, o óleo, o sal e a farinha de milho. 2. Adicione o fermento e misture bem. 3. Deixe a massa descansar por 30 minutos. 4. Faça as formas dos pães e coloque-os em uma assadeira untada. 5. Leve ao forno por 25-30 minutos.', 12, 1, 22),
-(16, 'Bolo de Limão', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Adicione o suco de limão e raspas de limão e misture novamente. 5. Despeje a massa em uma forma untada e enfarinhada. 6. Leve ao forno por 25-30 minutos.', 8, 2, 23),
-(17, 'Croissant', '1. Abra a massa folhada e corte-a em triângulos. 2. Adicione o recheio de sua escolha e enrole a massa a partir da base. 3. Leve ao forno por 15-20 minutos até dourar.', 6, 4, 24),
-(18, 'Bolo de Morango', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Adicione os morangos picados e misture novamente. 5. Despeje a massa em uma forma untada e enfarinhada. 6. Leve ao forno por 25-30 minutos.', 8, 2, 25),
-(19, 'Pão de Açúcar', '1. Em uma tigela, misture a água, o açúcar, o óleo, o sal e a farinha de trigo. 2. Adicione o fermento e misture bem. 3. Deixe a massa descansar por 30 minutos. 4. Faça as formas dos pães e coloque-os em uma assadeira untada. 5. Leve ao forno por 25-30 minutos. 6. Pincele açúcar de confeiteiro na superfície dos pães antes de servir.', 12, 1, 26),
-(20, 'Bolo de Abacaxi', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Adicione o suco e a calda de limão e misture novamente. 5. Despeje a massa em uma forma untada e enfarinhada. 6. Leve ao forno por 25-30 minutos.', 8, 2, 27),
-(21, 'Pão de Forma', '1. Em uma tigela, misture a água, o açúcar, o óleo, o sal e a farinha de trigo. 2. Adicione o fermento e misture bem. 3. Deixe a massa descansar por 30 minutos. 4. Faça a forma do pão e coloque-o em uma assadeira untada. 5. Leve ao forno por 25-30 minutos.', 8, 1, 28),
-(23, 'Torta de Maçã', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Adicione as maçãs picadas e misture novamente. 5. Despeje a massa em uma forma untada e enfarinhada. 6. Leve ao forno por 25-30 minutos.', 8, 7, 30);
+INSERT INTO `receitas` (`id_receita`, `nome_receita`, `instrucoes_receita`, `rendimento`, `categoria`, `id_imagem`, `favorita`) VALUES
+(2, 'Pão de Queijo', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture o polvilho, o queijo e o sal. 3. Adicione o óleo e o leite, e misture até formar uma massa homogênea. 4. Faça pequenas bolas da massa e coloque-as em uma assadeira untada. 5. Leve ao forno por 15-20 minutos.', 12, 1, 1, 1),
+(3, 'Bolo de Laranja', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Despeje a massa em uma forma untada e enfarinhada. 5. Leve ao forno por 25-30 minutos.', 8, 2, 2, 1),
+(4, 'Pão de Forma', '1. Em uma tigela, misture a água, o açúcar, o óleo, o sal e a farinha de trigo. 2. Adicione o fermento e misture bem. 3. Deixe a massa descansar por 30 minutos. 4. Faça as formas dos pães e coloque-os em uma assadeira untada. 5. Leve ao forno por 25-30 minutos.', 12, 1, 0, 0),
+(5, 'Torta de Limão', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Despeje a massa em uma forma untada e enfarinhada. 5. Leve ao forno por 25-30 minutos.', 8, 7, 4, 1),
+(6, 'Bolo de Morango', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Despeje a massa em uma forma untada e enfarinhada. 5. Leve ao for no por 25-30 minutos e adicione os morangos no final.', 8, 2, 0, 0),
+(7, 'Croissant recheado', '1. Abra a massa folhada em um retângulo. 2. Faça cortes triangulares na massa, começando do canto superior esquerdo até o canto inferior direito. 3. Enrole cada triângulo a partir da base larga até a ponta. 4. Deixe os croissants descansarem por 30 minutos antes de assar. 5. Leve ao forno por 15-20 minutos.', 12, 4, 0, 0),
+(8, 'Bolo de Cenoura', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Despeje a massa em uma forma untada e enfarinhada. 5. Leve ao forno por 25-30 minutos.', 8, 2, 0, 0),
+(9, 'Pão de Açúcar', '1. Em uma tigela, misture a água, o açúcar, o óleo, o sal e a farinha de trigo. 2. Adicione o fermento e misture bem. 3. Deixe a massa descansar por 30 minutos. 4. Faça as formas dos pães e coloque-os em uma assadeira untada. 5. Leve ao forno por 25-30 minutos e polvilhe açúcar de confeiteiro antes de servir.', 12, 1, 3, 1),
+(10, 'Bolo de Banana', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4 . Adicione as bananas amassadas e misture novamente. 5. Despeje a massa em uma forma untada e enfarinhada. 6. Leve ao forno por 25-30 minutos.', 8, 2, 0, 0),
+(11, 'Pão de Queijo', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture a farinha de mandioca, o queijo ralado, o leite e o sal. 3. Adicione a gema e misture novamente. 4. Faça as formas dos pães e coloque-os em uma assadeira untada. 5. Leve ao forno por 15-20 minutos.', 12, 1, 0, 0),
+(12, 'Bolo de Chocolate', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Adicione o chocolate derretido e misture novamente. 5. Despeje a massa em uma forma untada e enfarinhada. 6. Leve ao forno por 25-30 minutos.', 8, 2, 0, 0),
+(13, 'Pão de Forma', '1. Em uma tigela, misture a água, o açúcar, o óleo, o sal e a farinha de trigo. 2. Adicione o fermento e misture bem. 3. Deixe a massa descansar por 30 minutos. 4. Faça a forma do pão e coloque-o em uma assadeira untada. 5. Leve ao forno por 25-30 minutos.', 8, 1, 0, 0),
+(14, 'Bolo de Laranja', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Adicione o suco de laranja e misture novamente. 5. Despeje a massa em uma forma untada e enfarinhada. 6. Leve ao forno por 25-30 minutos.', 8, 2, 0, 0),
+(15, 'Pão de Milho', '1. Em uma tigela, misture a água, o açúcar, o óleo, o sal e a farinha de milho. 2. Adicione o fermento e misture bem. 3. Deixe a massa descansar por 30 minutos. 4. Faça as formas dos pães e coloque-os em uma assadeira untada. 5. Leve ao forno por 25-30 minutos.', 12, 1, 0, 0),
+(16, 'Bolo de Limão', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Adicione o suco de limão e raspas de limão e misture novamente. 5. Despeje a massa em uma forma untada e enfarinhada. 6. Leve ao forno por 25-30 minutos.', 8, 2, 0, 0),
+(17, 'Croissant', '1. Abra a massa folhada e corte-a em triângulos. 2. Adicione o recheio de sua escolha e enrole a massa a partir da base. 3. Leve ao forno por 15-20 minutos até dourar.', 6, 4, 0, 0),
+(18, 'Bolo de Morango', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Adicione os morangos picados e misture novamente. 5. Despeje a massa em uma forma untada e enfarinhada. 6. Leve ao forno por 25-30 minutos.', 8, 2, 0, 0),
+(19, 'Pão de Açúcar', '1. Em uma tigela, misture a água, o açúcar, o óleo, o sal e a farinha de trigo. 2. Adicione o fermento e misture bem. 3. Deixe a massa descansar por 30 minutos. 4. Faça as formas dos pães e coloque-os em uma assadeira untada. 5. Leve ao forno por 25-30 minutos. 6. Pincele açúcar de confeiteiro na superfície dos pães antes de servir.', 12, 1, 3, 1),
+(20, 'Bolo de Abacaxi', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Adicione o suco e a calda de limão e misture novamente. 5. Despeje a massa em uma forma untada e enfarinhada. 6. Leve ao forno por 25-30 minutos.', 8, 2, 0, 0),
+(21, 'Pão de Forma', '1. Em uma tigela, misture a água, o açúcar, o óleo, o sal e a farinha de trigo. 2. Adicione o fermento e misture bem. 3. Deixe a massa descansar por 30 minutos. 4. Faça a forma do pão e coloque-o em uma assadeira untada. 5. Leve ao forno por 25-30 minutos.', 8, 1, 0, 0),
+(23, 'Torta de Maçã', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Adicione as maçãs picadas e misture novamente. 5. Despeje a massa em uma forma untada e enfarinhada. 6. Leve ao forno por 25-30 minutos.', 8, 7, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -191,12 +243,35 @@ CREATE TABLE `receita_ingrediente` (
 --
 
 INSERT INTO `receita_ingrediente` (`id_receita`, `id_ingrediente`) VALUES
+(2, 5),
+(2, 7),
+(2, 8),
+(2, 12),
+(2, 13),
+(2, 14),
 (12, 1),
 (12, 2),
 (12, 3),
 (12, 4),
 (12, 5),
-(12, 6);
+(12, 6),
+(17, 1),
+(17, 2),
+(17, 4),
+(17, 5),
+(17, 7),
+(17, 9),
+(17, 15),
+(23, 7),
+(23, 15),
+(23, 16),
+(23, 17),
+(23, 18),
+(23, 19),
+(23, 20),
+(23, 21),
+(23, 22),
+(23, 23);
 
 --
 -- Índices para tabelas despejadas
@@ -270,7 +345,7 @@ ALTER TABLE `controle_lucro`
 -- AUTO_INCREMENT de tabela `estoque`
 --
 ALTER TABLE `estoque`
-  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de tabela `funcionarios`
@@ -282,13 +357,13 @@ ALTER TABLE `funcionarios`
 -- AUTO_INCREMENT de tabela `imagens`
 --
 ALTER TABLE `imagens`
-  MODIFY `id_imagem` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_imagem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `ingredientes`
 --
 ALTER TABLE `ingredientes`
-  MODIFY `id_ingrediente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_ingrediente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de tabela `receitas`
