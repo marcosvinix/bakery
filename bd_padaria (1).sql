@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28-Jan-2023 às 02:40
+-- Tempo de geração: 29-Jan-2023 às 15:15
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 7.4.27
 
@@ -84,11 +84,11 @@ CREATE TABLE `estoque` (
 --
 
 INSERT INTO `estoque` (`id_produto`, `descricao_produto_estoque`, `quantidade_disponivel`, `validade_lote`, `tipo_produto`, `medida_produto_estoque`, `quantidade_minima_produto`, `quantidade_maxima_produto`, `ignorado`, `id_funcionario`) VALUES
-(1, 'farinha de trigo', 10000, '10/12/2023', 'grão', 'grama', 1, 10000, 0, 1),
+(1, 'farinha de trigo', 750, '10/12/2023', 'grão', 'grama', 500, 10000, 0, 1),
 (2, 'açúcar', 10000, '10/12/2023', 'grão', 'grama', 1, 10000, 0, 1),
 (3, 'cacau em pó', 10000, '10/12/2023', 'grão', 'grama', 1, 10000, 0, 1),
 (4, 'fermento em pó', 10000, '10/12/2023', 'grão', 'grama', 1, 10000, 0, 1),
-(5, 'sal', 10000, '10/12/2023', 'grão', 'grama', 1, 10000, 0, 1),
+(5, 'sal', 750, '10/12/2023', 'grão', 'grama', 500, 10000, 0, 1),
 (6, 'bicarbonato de sódio', 10000, '10/12/2023', 'grão', 'grama', 1, 10000, 0, 1),
 (7, 'ovos', 10000, '10/12/2023', 'proteina', 'grama', 1, 10000, 0, 1),
 (8, 'óleo', 10000, '10/12/2023', 'líquido', 'grama', 1, 10000, 0, 1),
@@ -139,9 +139,21 @@ CREATE TABLE `imagens` (
 
 INSERT INTO `imagens` (`id_imagem`, `nome_imagem`) VALUES
 (1, 'https://st.depositphotos.com/3033681/4909/i/450/depositphotos_49093343-stock-photo-brazilian-snack-cheese-bread-pao.jpg%27'),
-(2, 'https://www.sabornamesa.com.br/media/k2/items/cache/f3fa6960b52e3c842fd94fee5eb122ab_XL.jpg%27'),
+(2, 'https://t1.uc.ltmcdn.com/pt/posts/5/2/8/como_fazer_um_bolo_de_laranja_6825_orig.jpg'),
 (3, 'https://st3.depositphotos.com/1364913/34805/i/450/depositphotos_348057150-stock-photo-berliner-doughnuts-fresh-made-detailed.jpg%27'),
-(4, 'https://st4.depositphotos.com/4489936/24733/i/450/depositphotos_247333854-stock-photo-mini-cornbread-muffins-cooling-tray.jpg%27');
+(4, 'https://st4.depositphotos.com/4489936/24733/i/450/depositphotos_247333854-stock-photo-mini-cornbread-muffins-cooling-tray.jpg%27'),
+(5, 'https://amopaocaseiro.com.br/wp-content/uploads/2019/12/pao-de-forma-caseiro_02.jpg'),
+(6, 'https://vovopalmirinha.com.br/wp-content/uploads/2017/05/bolo-morango.jpg'),
+(7, 'https://p2.trrsf.com/image/fget/cf/774/0/images.terra.com/2020/08/20/croissant-presunto-e-queijo.jpg'),
+(8, 'https://www.beltnutrition.com.br/media/mageplaza/blog/post/r/e/receita-bolo-de-cenoura-fit_9.jpeg'),
+(9, 'https://areademulher.r7.com/wp-content/uploads/2021/10/aprenda-a-melhor-receita-de-bolo-de-banana-de-todas-a-mais-deliciosa-5-1200x900.jpg'),
+(10, 'https://i.ytimg.com/vi/QFMxJWh3mqE/maxresdefault.jpg'),
+(11, 'https://www.restodonte.com.br/recipePics/9900717.jpg?v114'),
+(12, 'https://comidinhasdochef.com/wp-content/uploads/2018/12/Bolo-Lim%C3%A3o-Fofinho.jpg'),
+(13, 'https://img.itdg.com.br/tdg/images/recipes/000/011/234/349247/349247_original.jpg'),
+(14, 'https://claudia.abril.com.br/wp-content/uploads/2020/02/receita-bolo-morango-chantilly.jpg?quality=85&strip=info'),
+(15, 'https://guiadacozinha.com.br/wp-content/uploads/2019/10/bolo-abacaxi-leite-condensado.jpg'),
+(16, 'https://www.casalcozinha.com.br/wp-content/uploads/2020/11/receita-simples-e-caseira-de-torta-de-maca-1300x932.png');
 
 -- --------------------------------------------------------
 
@@ -194,8 +206,8 @@ CREATE TABLE `receitas` (
   `id_receita` int(11) NOT NULL,
   `nome_receita` varchar(100) NOT NULL,
   `instrucoes_receita` varchar(500) NOT NULL,
-  `rendimento` int(11) NOT NULL,
-  `categoria` int(11) NOT NULL,
+  `rendimento` int(11) DEFAULT NULL,
+  `categoria` int(11) DEFAULT NULL,
   `id_imagem` int(11) DEFAULT NULL,
   `favorita` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -207,25 +219,20 @@ CREATE TABLE `receitas` (
 INSERT INTO `receitas` (`id_receita`, `nome_receita`, `instrucoes_receita`, `rendimento`, `categoria`, `id_imagem`, `favorita`) VALUES
 (2, 'Pão de Queijo', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture o polvilho, o queijo e o sal. 3. Adicione o óleo e o leite, e misture até formar uma massa homogênea. 4. Faça pequenas bolas da massa e coloque-as em uma assadeira untada. 5. Leve ao forno por 15-20 minutos.', 12, 1, 1, 1),
 (3, 'Bolo de Laranja', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Despeje a massa em uma forma untada e enfarinhada. 5. Leve ao forno por 25-30 minutos.', 8, 2, 2, 1),
-(4, 'Pão de Forma', '1. Em uma tigela, misture a água, o açúcar, o óleo, o sal e a farinha de trigo. 2. Adicione o fermento e misture bem. 3. Deixe a massa descansar por 30 minutos. 4. Faça as formas dos pães e coloque-os em uma assadeira untada. 5. Leve ao forno por 25-30 minutos.', 12, 1, 0, 0),
+(4, 'Pão de Forma', '1. Em uma tigela, misture a água, o açúcar, o óleo, o sal e a farinha de trigo. 2. Adicione o fermento e misture bem. 3. Deixe a massa descansar por 30 minutos. 4. Faça as formas dos pães e coloque-os em uma assadeira untada. 5. Leve ao forno por 25-30 minutos.', 12, 1, 5, 0),
 (5, 'Torta de Limão', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Despeje a massa em uma forma untada e enfarinhada. 5. Leve ao forno por 25-30 minutos.', 8, 7, 4, 1),
-(6, 'Bolo de Morango', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Despeje a massa em uma forma untada e enfarinhada. 5. Leve ao for no por 25-30 minutos e adicione os morangos no final.', 8, 2, 0, 0),
-(7, 'Croissant recheado', '1. Abra a massa folhada em um retângulo. 2. Faça cortes triangulares na massa, começando do canto superior esquerdo até o canto inferior direito. 3. Enrole cada triângulo a partir da base larga até a ponta. 4. Deixe os croissants descansarem por 30 minutos antes de assar. 5. Leve ao forno por 15-20 minutos.', 12, 4, 0, 0),
-(8, 'Bolo de Cenoura', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Despeje a massa em uma forma untada e enfarinhada. 5. Leve ao forno por 25-30 minutos.', 8, 2, 0, 0),
+(6, 'Bolo de Morango', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Despeje a massa em uma forma untada e enfarinhada. 5. Leve ao for no por 25-30 minutos e adicione os morangos no final.', 8, 2, 6, 0),
+(7, 'Croissant recheado', '1. Abra a massa folhada em um retângulo. 2. Faça cortes triangulares na massa, começando do canto superior esquerdo até o canto inferior direito. 3. Enrole cada triângulo a partir da base larga até a ponta. 4. Deixe os croissants descansarem por 30 minutos antes de assar. 5. Leve ao forno por 15-20 minutos.', 12, 4, 7, 0),
+(8, 'Bolo de Cenoura', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Despeje a massa em uma forma untada e enfarinhada. 5. Leve ao forno por 25-30 minutos.', 8, 2, 8, 0),
 (9, 'Pão de Açúcar', '1. Em uma tigela, misture a água, o açúcar, o óleo, o sal e a farinha de trigo. 2. Adicione o fermento e misture bem. 3. Deixe a massa descansar por 30 minutos. 4. Faça as formas dos pães e coloque-os em uma assadeira untada. 5. Leve ao forno por 25-30 minutos e polvilhe açúcar de confeiteiro antes de servir.', 12, 1, 3, 1),
-(10, 'Bolo de Banana', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4 . Adicione as bananas amassadas e misture novamente. 5. Despeje a massa em uma forma untada e enfarinhada. 6. Leve ao forno por 25-30 minutos.', 8, 2, 0, 0),
-(11, 'Pão de Queijo', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture a farinha de mandioca, o queijo ralado, o leite e o sal. 3. Adicione a gema e misture novamente. 4. Faça as formas dos pães e coloque-os em uma assadeira untada. 5. Leve ao forno por 15-20 minutos.', 12, 1, 0, 0),
-(12, 'Bolo de Chocolate', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Adicione o chocolate derretido e misture novamente. 5. Despeje a massa em uma forma untada e enfarinhada. 6. Leve ao forno por 25-30 minutos.', 8, 2, 0, 0),
-(13, 'Pão de Forma', '1. Em uma tigela, misture a água, o açúcar, o óleo, o sal e a farinha de trigo. 2. Adicione o fermento e misture bem. 3. Deixe a massa descansar por 30 minutos. 4. Faça a forma do pão e coloque-o em uma assadeira untada. 5. Leve ao forno por 25-30 minutos.', 8, 1, 0, 0),
-(14, 'Bolo de Laranja', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Adicione o suco de laranja e misture novamente. 5. Despeje a massa em uma forma untada e enfarinhada. 6. Leve ao forno por 25-30 minutos.', 8, 2, 0, 0),
-(15, 'Pão de Milho', '1. Em uma tigela, misture a água, o açúcar, o óleo, o sal e a farinha de milho. 2. Adicione o fermento e misture bem. 3. Deixe a massa descansar por 30 minutos. 4. Faça as formas dos pães e coloque-os em uma assadeira untada. 5. Leve ao forno por 25-30 minutos.', 12, 1, 0, 0),
-(16, 'Bolo de Limão', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Adicione o suco de limão e raspas de limão e misture novamente. 5. Despeje a massa em uma forma untada e enfarinhada. 6. Leve ao forno por 25-30 minutos.', 8, 2, 0, 0),
-(17, 'Croissant', '1. Abra a massa folhada e corte-a em triângulos. 2. Adicione o recheio de sua escolha e enrole a massa a partir da base. 3. Leve ao forno por 15-20 minutos até dourar.', 6, 4, 0, 0),
-(18, 'Bolo de Morango', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Adicione os morangos picados e misture novamente. 5. Despeje a massa em uma forma untada e enfarinhada. 6. Leve ao forno por 25-30 minutos.', 8, 2, 0, 0),
-(19, 'Pão de Açúcar', '1. Em uma tigela, misture a água, o açúcar, o óleo, o sal e a farinha de trigo. 2. Adicione o fermento e misture bem. 3. Deixe a massa descansar por 30 minutos. 4. Faça as formas dos pães e coloque-os em uma assadeira untada. 5. Leve ao forno por 25-30 minutos. 6. Pincele açúcar de confeiteiro na superfície dos pães antes de servir.', 12, 1, 3, 1),
-(20, 'Bolo de Abacaxi', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Adicione o suco e a calda de limão e misture novamente. 5. Despeje a massa em uma forma untada e enfarinhada. 6. Leve ao forno por 25-30 minutos.', 8, 2, 0, 0),
-(21, 'Pão de Forma', '1. Em uma tigela, misture a água, o açúcar, o óleo, o sal e a farinha de trigo. 2. Adicione o fermento e misture bem. 3. Deixe a massa descansar por 30 minutos. 4. Faça a forma do pão e coloque-o em uma assadeira untada. 5. Leve ao forno por 25-30 minutos.', 8, 1, 0, 0),
-(23, 'Torta de Maçã', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Adicione as maçãs picadas e misture novamente. 5. Despeje a massa em uma forma untada e enfarinhada. 6. Leve ao forno por 25-30 minutos.', 8, 7, 0, 0);
+(10, 'Bolo de Banana', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4 . Adicione as bananas amassadas e misture novamente. 5. Despeje a massa em uma forma untada e enfarinhada. 6. Leve ao forno por 25-30 minutos.', 8, 2, 9, 0),
+(12, 'Bolo de Chocolate', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Adicione o chocolate derretido e misture novamente. 5. Despeje a massa em uma forma untada e enfarinhada. 6. Leve ao forno por 25-30 minutos.', 8, 2, 10, 0),
+(15, 'Pão de Milho', '1. Em uma tigela, misture a água, o açúcar, o óleo, o sal e a farinha de milho. 2. Adicione o fermento e misture bem. 3. Deixe a massa descansar por 30 minutos. 4. Faça as formas dos pães e coloque-os em uma assadeira untada. 5. Leve ao forno por 25-30 minutos.', 12, 1, 11, 1),
+(16, 'Bolo de Limão', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Adicione o suco de limão e raspas de limão e misture novamente. 5. Despeje a massa em uma forma untada e enfarinhada. 6. Leve ao forno por 25-30 minutos.', 8, 2, 12, 0),
+(17, 'Croissant', '1. Abra a massa folhada e corte-a em triângulos. 2. Adicione o recheio de sua escolha e enrole a massa a partir da base. 3. Leve ao forno por 15-20 minutos até dourar.', 6, 4, 13, 0),
+(18, 'Bolo de Morango', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Adicione os morangos picados e misture novamente. 5. Despeje a massa em uma forma untada e enfarinhada. 6. Leve ao forno por 25-30 minutos.', 8, 2, 14, 0),
+(20, 'Bolo de Abacaxi', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Adicione o suco e a calda de limão e misture novamente. 5. Despeje a massa em uma forma untada e enfarinhada. 6. Leve ao forno por 25-30 minutos.', 8, 2, 15, 0),
+(23, 'Torta de Maçã', '1. Pré-aqueça o forno a 180 graus. 2. Em uma tigela, misture os ingredientes secos. 3. Adicione os ingredientes líquidos e misture até ficar homogêneo. 4. Adicione as maçãs picadas e misture novamente. 5. Despeje a massa em uma forma untada e enfarinhada. 6. Leve ao forno por 25-30 minutos.', 8, 7, 16, 0);
 
 -- --------------------------------------------------------
 
@@ -357,7 +364,7 @@ ALTER TABLE `funcionarios`
 -- AUTO_INCREMENT de tabela `imagens`
 --
 ALTER TABLE `imagens`
-  MODIFY `id_imagem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_imagem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de tabela `ingredientes`

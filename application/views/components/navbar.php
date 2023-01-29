@@ -40,11 +40,17 @@
             </div>
 
             <div class="btn-group dropstart">
-            <button type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button type="button" style="background-color: transparent; border: none;" data-bs-toggle="dropdown" aria-expanded="false">
                 <img class="nav-btn user-desktop" draggable="false" src="<?php echo base_url('assets/images/user.png'); ?>">
             </button>
-            <ul class="dropdown-menu">
-                <!-- Dropdown menu links -->
+            <ul class="dropdown-menu justify-content-center p-2">
+                <li>
+                    <a href="/p/user" class="btn btn-danger" style="background-color: #4E1784; border: none;">Configurações</a>
+                </li>
+
+                <li>
+                    <a href="#" class="btn btn-danger mt-2" style="background-color: #4E1784; width:100%; border: none;">Logout</a>
+                </li>
             </ul>
             </div>
    

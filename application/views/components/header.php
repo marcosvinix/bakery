@@ -17,7 +17,7 @@
                     <button type="button" data-bs-toggle="dropdown" aria-expanded="false" style="outline: none; border: none; background-color: transparent;"> 
                         <img src="<?php echo base_url('assets/images/sino.png'); ?>" class="bell" width="35px" draggable="false" alt="">
                     </button>
-                    <ul class="dropdown-menu" style="width: 35vh;">
+                    <ul class="dropdown-menu p-2" style="width: 35vh;">
                         <?php
 							foreach($notificacoes as $n){
 								echo '
