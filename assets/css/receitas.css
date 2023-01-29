@@ -31,15 +31,6 @@
     margin-right: -1.4vh;
 }
 
-.bi{
-    color: #F5ECFF;
-    left: 85%;
-    margin-top: .7vh;
-    transform: scale(2);
-    position: absolute;
-    cursor: pointer;
-}
-
 .botao-add{
     position: absolute !important;
     bottom: 8%;

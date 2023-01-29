@@ -8,7 +8,7 @@
 
     <div class="row mt-5">
         <div class="col-6">
-            <img src="<?php print_r($imagem[0]->nome_imagem); ?>" width="100%"  alt="">
+            <img src="<?php print_r($imagem[0]->nome_imagem); ?>" width="100%" height="500rem;"  alt="">
             <button class="btn btn-success mt-3" data-bs-toggle="modal" data-bs-target="#ingredientesReceita" style="width: 100%; height: 5vh; background-color: #4e1784; outline: none; border: none;">Preparar Receita</button>
         </div>
 
@@ -52,7 +52,7 @@
 
                         echo '
                             <tr>
-                                <td class="text-center">'.$ingrediente->nome.'</td>
+                                <td class="text-center">'.ucfirst($ingrediente->nome).'</td>
                                 <td class="text-center"><input style="width: 5vh;" max="100" min="0" type="number" value="'.$ingrediente->porcentagem.'">%</td>
                                 <td class="text-center"><input style="width: 5vh;" type="number">g</td>
                             </tr>

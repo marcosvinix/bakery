@@ -39,7 +39,16 @@
                 <img class="nav-btn user-mobile" draggable="false" src="<?php echo base_url('assets/images/user.png'); ?>">
             </div>
 
-            <img class="nav-btn user-desktop" draggable="false" src="<?php echo base_url('assets/images/user.png'); ?>">
+            <div class="btn-group dropstart">
+            <button type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img class="nav-btn user-desktop" draggable="false" src="<?php echo base_url('assets/images/user.png'); ?>">
+            </button>
+            <ul class="dropdown-menu">
+                <!-- Dropdown menu links -->
+            </ul>
+            </div>
+   
+            
 
         </div>
 </div>

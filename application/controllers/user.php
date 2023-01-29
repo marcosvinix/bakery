@@ -1,9 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class home extends CI_Controller {
+class user extends CI_Controller {
 
-	
 	
 	public function index()
 	{
@@ -16,17 +15,18 @@ class home extends CI_Controller {
 				$notify_all[] = $n;
 			}
 		}
-
-
-		$data["title"] = "Home";
-		$data["favoritas"] = $this->bd_padaria->get_favoritas();
 		$data["notificacoes"] = $notify_all;
+
+		$data["title"] = "Usuario";
 
 		$this->load->helper('url');
 		$this->load->view('components/navbar');
 		$this->load->view('components/header', $data);
-		$this->load->view('home');
-	}
+		$this->load->view('user', $data);
+	
+
+	} 
+
 
 
 }

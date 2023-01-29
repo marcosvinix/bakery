@@ -14,6 +14,7 @@ class bd_padaria extends CI_Model {
         $this->db->select('*');
         $this->db->from('Receitas');
         $this->db->where('categoria', $category_id);
+        $this->db->join('imagens', 'receitas.id_imagem = imagens.id_imagem');
         $query = $this->db->get();
         return $query->result();
     }
@@ -43,6 +44,30 @@ class bd_padaria extends CI_Model {
         $this->db->select('*');
         $this->db->from('receitas');
         $this->db->where('favorita', 1);
+        $this->db->join('imagens', 'receitas.id_imagem = imagens.id_imagem');
+        $this->db->join('categorias', 'categorias.id_categoria = receitas.categoria');
+        $query = $this->db->get();
+        return $query->result();
+        
+    }
+
+    public function get_estoque(){
+        $this->db->select('*');
+        $this->db->from('estoque');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function delete_estoque($id){
+        $this->db->where('id_produto', $id);
+        $this->db->delete('estoque');
+    }
+
+    public function pesquisa($name){
+        $this->db->select('*');
+        $this->db->from('receitas');
+        $this->db->join('imagens', 'receitas.id_imagem = imagens.id_imagem');
+        $this->db->like('nome_receita', $name);
         $query = $this->db->get();
         return $query->result();
     }

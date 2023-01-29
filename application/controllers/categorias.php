@@ -6,6 +6,16 @@ class categorias extends CI_Controller {
 	
 	public function index()
 	{
+		$this->load->database();
+		$this->load->model('bd_padaria');
+
+		$notify = $this->bd_padaria->get_estoque();
+		foreach($notify as $n){
+			if($n->quantidade_disponivel <= $n->quantidade_minima_produto+($n->quantidade_minima_produto*0.5)){
+				$notify_all[] = $n;
+			}
+		}
+		$data["notificacoes"] = $notify_all;
 
 		$data["title"] = "Categorias";
 
@@ -19,8 +29,17 @@ class categorias extends CI_Controller {
 
 	public function r($categoria,$receita = null)
 	{
+
 		$this->load->database();
 		$this->load->model('bd_padaria');
+
+		$notify = $this->bd_padaria->get_estoque();
+		foreach($notify as $n){
+			if($n->quantidade_disponivel <= $n->quantidade_minima_produto+($n->quantidade_minima_produto*0.5)){
+				$notify_all[] = $n;
+			}
+		}
+		$data["notificacoes"] = $notify_all;
 
 		if($receita == null){
 

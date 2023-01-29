@@ -28,10 +28,10 @@
     
                 echo '
                         <div class="card m-2" style="width: 18rem;">
-                            <img src="https://www.livrariaarteeciencia.com.br//assets/images/placeholder.png" height="180px" class="card-img-top" alt="...">
+                            <img src="'.$receita['nome_imagem'].'" height="180px" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">'.$receita['nome_receita'].'</h5>
-                                <a href="bolos/'.$receita['nome_receita'].'" class="btn btn-primary text-center">Preparar</a>
+                                <a href="'.$title.'/'.$receita['nome_receita'].'" class="btn btn-primary text-center">Preparar</a>
                             </div>
                         </div>
                 ';
