@@ -72,5 +72,13 @@ class bd_padaria extends CI_Model {
         return $query->result();
     }
 
+    
+  public function validate_credentials($username, $password) {
+
+    $query = $this->db->get_where('funcionarios', array('login' => $username, 'senha' => $password));
+    return $query->num_rows() > 0;
+  
+    }
+
 
 }

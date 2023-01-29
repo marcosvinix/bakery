@@ -16,7 +16,9 @@
                     <div class="card-body">
                     <h5 class="card-title">Ops...</h5>
                     <p class="card-text">Parece que você ainda não adicionou receitas a essa categoria!</p>
-                    <a href="#" class="btn btn-success">Adicionar receitas</a>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReceita">
+                        Launch demo modal
+                    </button>
                     </div>
                 </div>
             ';

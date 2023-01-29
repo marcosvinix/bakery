@@ -48,7 +48,7 @@ cards = document.querySelectorAll('.category');
 for(let i of cards){
 
   i.addEventListener('click', () => {
-    window.location.href = `categorias/r/${i.id}`;
+    window.location.href = `receitas/r/${i.id}`;
   })
 }
 

@@ -20,7 +20,7 @@
 
             <div class="itens d-flex text-center nav-column-itens">
 
-                <a href="/p/categorias">
+                <a href="/p/receitas">
                     <img class="nav-btn" draggable="false" src="<?php echo base_url('assets/images/list.png'); ?>">
                 </a>
 
@@ -49,7 +49,7 @@
                 </li>
 
                 <li>
-                    <a href="#" class="btn btn-danger mt-2" style="background-color: #4E1784; width:100%; border: none;">Logout</a>
+                    <a href="/p/logout" class="btn btn-danger mt-2" style="background-color: #4E1784; width:100%; border: none;">Logout</a>
                 </li>
             </ul>
             </div>

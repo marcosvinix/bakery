@@ -1,13 +1,25 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class categorias extends CI_Controller {
+class receitas extends CI_Controller {
 
+	
+	public function __construct() {
+		parent::__construct();
+		$this->load->database();
+		$this->load->model('bd_padaria');
+		$this->load->library('session');
+		$this->load->helper('url');
+		
+		$logged_in = $this->session->userdata('logged_in');
+
+		if(!$logged_in){
+			redirect('./login');
+		}
+	}
 	
 	public function index()
 	{
-		$this->load->database();
-		$this->load->model('bd_padaria');
 
 		$notify = $this->bd_padaria->get_estoque();
 		foreach($notify as $n){
@@ -19,7 +31,6 @@ class categorias extends CI_Controller {
 
 		$data["title"] = "Categorias";
 
-		$this->load->helper('url');
 		$this->load->view('components/navbar');
 		$this->load->view('components/header', $data);
 		$this->load->view('categorias');
@@ -29,9 +40,6 @@ class categorias extends CI_Controller {
 
 	public function r($categoria,$receita = null)
 	{
-
-		$this->load->database();
-		$this->load->model('bd_padaria');
 
 		$notify = $this->bd_padaria->get_estoque();
 		foreach($notify as $n){
@@ -47,11 +55,11 @@ class categorias extends CI_Controller {
 
 			$category_id = $this->bd_padaria->get_category_id($categoria);
 			$data['receitas'] = $this->bd_padaria->get_receitas($category_id);
-	
-			$this->load->helper('url');
+
 			$this->load->view('components/navbar');
 			$this->load->view('components/header', $data);
 			$this->load->view('receitas', $data);
+			$this->load->view('components/adicionar_receita');
 		}
 
 			if($receita != null){
@@ -61,10 +69,10 @@ class categorias extends CI_Controller {
 				$data['ingredients'] = $this->bd_padaria->get_ingredients($data['recipe'][0]->id_receita);
 				$data['imagem'] = $this->bd_padaria->get_img($data['recipe'][0]->id_imagem);
 
-				$this->load->helper('url');
 				$this->load->view('components/navbar');
 				$this->load->view('components/header', $data);
 				$this->load->view('receita', $data);
+				$this->load->view('components/adicionar_receita');
 				
 			}
 			
