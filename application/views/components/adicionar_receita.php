@@ -7,6 +7,66 @@
         color: #4E1784;
     }
 
+    .modal-header{
+        background-color:  #4E1784;
+        color: white;
+    }
+
+    .input-receita{
+        border-radius: 1vh;
+        border: solid 3px #F5ECFF;
+        width: 50vh;
+        height: 4vh;
+        margin-bottom: 3vh;
+        padding: 2vh;
+    }
+
+    .inpt-receita{
+        border-radius: 1vh;
+        border: solid 3px #F5ECFF;
+        width: 50vh;
+        height: auto;
+        margin-bottom: 3vh;
+        padding: 2vh;
+    }
+
+    .text-receita{
+        font-size: 2vh;
+        color: #4E1784;
+    }
+
+    .btn-confirm{
+        background-color: #4E1784;
+        border: solid 2px #4E1784;
+    }
+    .btn-confirm:hover{
+        background-color: #4E1784;
+        border: solid 2px #4E1784;
+    }
+
+    .btn-cancel{
+        background-color: #F5ECFF;
+        border: solid 2px #4E1784;
+        color: #4E1784;
+    }
+    .btn-cancel:hover{
+        background-color: #F5ECFF;
+        border: solid 2px #4E1784;
+        color: #4E1784;
+    }
+
+     
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
 </style>
 
 <button class="btn">
@@ -20,10 +80,8 @@
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="addReceitaLabel">Adicionar Receita</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-    
+      <div class="modal-body">  
 
         <form id="adicionar_receita" action="/p/receitas/adicionar_receita" method="post">
   <!-- Recipe Name Input -->
@@ -32,29 +90,29 @@
                 <div class="col-6">
                     
                 <div class="form-group">
-                    <label for="recipe_name">Nome da Receita</label>
-                    <input type="text" class="form-control" id="recipe_name" name="nome_receita" required>
+                    <label for="recipe_name" class="text-receita">Nome da Receita</label>
+                    <input type="text" class="form-control input-receita" id="recipe_name" name="nome_receita" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="recipe_description">Modo de Preparo</label>
-                    <textarea class="form-control" id="recipe_description" name="modo_preparo" rows="3" required></textarea>
+                    <label for="recipe_description" class="text-receita">Modo de Preparo</label>
+                    <textarea class="form-control inpt-receita" id="recipe_description" name="modo_preparo" rows="4" required></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label for="recipe_description">Rendimento</label>
-                    <input type="number" class="form-control" id="recipe_description" name="rendimento_receita" required>
+                    <label for="recipe_description" class="text-receita">Rendimento</label>
+                    <input type="number" class="form-control input-receita" id="recipe_description" name="rendimento_receita" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="recipe_description">Imagem</label>
-                    <input class="form-control" id="recipe_description" name="imagem_receita" required>
+                    <label for="recipe_description" class="text-receita">Imagem</label>
+                    <input class="form-control input-receita" id="recipe_description" name="imagem_receita" required>
                 </div>
             
                 <div class="form-group">
-                    <label for="recipe_description">Categoria</label>
-                    <select class="form-select" name="categoria_receita" aria-label="Default select example">
-                        <option value="default">Selecione uma categoria</option>
+                    <label for="recipe_description" class="text-receita">Categoria</label>
+                    <select class="form-select inpt-receita" name="categoria_receita" aria-label="Default select example">
+                        <option value="default" class="text-receita">Selecione uma categoria</option>
                         <?php
                             foreach ($categorias as $categoria) {
                                 echo '
@@ -67,13 +125,13 @@
                 </div>
 
                 </div>
-                <div class="col-6">
+                <div class="col-6" style="">
                     <div class="form-group">
-                    <label for="ingredients">Ingredientes</label>
+                    <label for="ingredients"  class="text-receita">Ingredientes</label>
                     <div id="ingredients-container">
                             
                     </div>
-                    <button type="button" class="btn btn-success mt-3" id="add-ingredient-btn">Adicionar Ingrediente</button>
+                    <button type="button" class="btn btn-success mt-3 btn-confirm" id="add-ingredient-btn">Adicionar Ingrediente</button>
             </div>
 
                 </div>
@@ -84,8 +142,8 @@
         <!--  -->
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" id="addReceita2" class="btn btn-primary">Adicionar Receita</button>
+        <button type="button" class="btn btn-secondary btn-cancel" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" id="addReceita2" class="btn btn-primary btn-confirm">Adicionar Receita</button>
       </div>
     </div>
   </div>
@@ -124,6 +182,7 @@
         for (let i of ingredients) {
             input.id = "ingrediente"+j;
             input.setAttribute('name', 'ingredientes[]')
+            input.setAttribute('class','inpt-receita')
             var option = document.createElement("option");
             option.value = i.id_produto;
             option.text = i.descricao_produto_estoque;
@@ -133,6 +192,8 @@
 
         var value = document.createElement("input");
         value.setAttribute('name', 'porcentagens[]')
+        value.setAttribute('class','input-receita')
+        value.setAttribute('placeholder','Porcentagem')
         value.id = "value"+j;
 
         j++;

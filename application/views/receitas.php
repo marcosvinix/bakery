@@ -25,7 +25,7 @@
 </style>
 
 
-<div class="container-fluid main-content d-flex flex-wrap">
+<div class="container-fluid main-content d-flex flex-wrap ">
             
     <?php
 

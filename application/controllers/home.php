@@ -10,6 +10,7 @@ class home extends CI_Controller {
 		$this->load->library('session');
 		$this->load->helper('url');
 		
+		
 		$logged_in = $this->session->userdata('logged_in');
 
 		if(!$logged_in){
@@ -31,10 +32,10 @@ class home extends CI_Controller {
 			}
 		}
 
-
 		$data["title"] = "Home";
 		$data["favoritas"] = $this->bd_padaria->get_favoritas();
 		$data["notificacoes"] = $notify_all;
+		$data["textbox"] = $this->bd_padaria->get_anotacao($this->session->userdata('username'));
 
 		$this->load->helper('url');
 		$this->load->view('components/navbar');

@@ -95,6 +95,24 @@ class receitas extends CI_Controller {
 
 	}
 
+
+	public function att_estoque(){
+		print_r($this->input->post('ids'));
+		print_r($this->input->post('qntds'));
+
+		$ids = $this->input->post('ids');
+		$qntds = $this->input->post('qntds');
+
+		$j = 0;
+		foreach ($ids as $id) {
+			$this->bd_padaria->update_estoque($id,$qntds[$j]);
+			$j++;
+		}
+
+		redirect('../../p/receitas');
+	}
+
+
 	public function adicionar_receita(){
 		print_r($this->input->post());
 

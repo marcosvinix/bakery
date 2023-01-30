@@ -25,7 +25,6 @@
                 <td>
                     <div class="container-fluid d-flex">
                        <a href="./estoque/delete/'.$produto->id_produto.'"> <i class="bi m-1 bi-x-lg"></i> </a>
-                       <a href="#"> <i class="bi m-1 bi-pencil-fill"></i> </a>
                        
                     </div>
                 </td>

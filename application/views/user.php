@@ -61,7 +61,7 @@
     <h1 class="title-cadastro">Criar uma conta</h1>
 
     <div class="cadastro">
-        <form class="d-flex flex-column" action="#" method="post">
+        <form class="d-flex flex-column" action="./user/add_user" method="post">
             <label class="login-text" for="name-usuer">Nome do funcionário</label>
             <input class="login-input" type="text" name="name-user">
         

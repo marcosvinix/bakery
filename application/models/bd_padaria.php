@@ -86,5 +86,22 @@ class bd_padaria extends CI_Model {
   
     }
 
+    public function get_anotacao($username){
+        $this->db->select('bloco');
+        $this->db->from('funcionarios');
+        $this->db->where('login', $username);
+        $query = $this->db->get();
+        return $query->result();
+    }
 
+
+    public function update_estoque($id, $quantidade){
+        $this->db->where('id_produto', $id);
+        $query = $this->db->get('estoque');
+        $current_quantity = $query->row()->quantidade_disponivel;
+     
+        // update the value
+        $this->db->where('id_produto', $id);
+        $this->db->update('estoque', array('quantidade_disponivel' => $current_quantity - $quantidade));
+     }
 }

@@ -87,6 +87,7 @@
       </div>
       <div class="modal-body">
 
+      <form action="../../att_estoque" method="post">
         <table class="table">
             <thead>
                 <tr>
@@ -99,24 +100,31 @@
                 <?php     
 
 
+
                     foreach ($ingredients as $ingrediente){
                       foreach ($estoque as $produto){
                         if($ingrediente->nome == $produto->id_produto){
-                          $ingrediente->nome = $produto->descricao_produto_estoque;
+
+                          $ingrediente->name = $produto->descricao_produto_estoque;
+
                         }
                       }
                     }
-
+                    
+                    $z = 0;
                     foreach ($ingredients as $ingrediente) {
 
 
                         echo '
                             <tr class="ingredients">
-                                <td class="text-center">'.ucfirst($ingrediente->nome).'</td>
+                                <td class="text-center name-ingredient" id="'.$ingrediente->nome.'">'.ucfirst($ingrediente->name).'</td>
+                                <input style="display: none;" type="text" name="ids[]" value="'.$ingrediente->nome.'">
                                 <td class="text-center"><input class="input-number percent" style="width: 5vh;" max="100" min="0" type="number" value="'.$ingrediente->porcentagem.'"> %</td>
-                                <td class="text-center"><input class="input-number gramas" style="width: 5vh;" type="number" value="0"> g</td>
+                                <td class="text-center"><input class="input-number gramas" style="width: 5vh;" name="qntds[]" type="number" value="0"> g</td>
                             </tr>
                         ';
+
+                        $z++;
                         
                     }
 
@@ -130,7 +138,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary btn-cancel" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary btn-confirm">Preparar</button>
+        <input type="submit" class="btn btn-primary btn-confirm">
+        </form>
       </div>
     </div>
   </div>
@@ -144,12 +153,12 @@
 
 <script>
 
+  
+  names = document.querySelectorAll('.name-ingredient');
   percents = document.querySelectorAll('.percent');
   gramas = document.querySelectorAll('.gramas');
 
 
-  
-  
   for(let x of gramas){
     
     base = 0;
@@ -178,13 +187,22 @@
         
     }
     
-
-      console.log(base);
-
     });
     
   }
 
-  console.log(base);
+  z = 0;
+  for(let i of names){
+    $.ajax({
+        url: "<?php echo base_url('receitas/att_estoque'); ?>",
+        type: "GET",
+        success: function(data) {
+            ingredients = JSON.parse(data);
+            console.log(ingredients);
+        }
+        });
+    z++
+  }
+
 
 </script>

@@ -38,7 +38,26 @@ class user extends CI_Controller {
 		$this->load->view('user', $data);
 	
 
-	} 
+	
+	}
+	
+	public function add_user(){
+
+		$nome_funcionario = $this->input->post('name-user');
+		$usuario = $this->input->post('username');
+		$senha = $this->input->post('password');
+
+		$data = array(
+			'nome_funcionario' => $nome_funcionario,
+			'login' => $usuario,
+			'senha' => $senha
+		);
+
+		$this->db->insert('funcionarios', $data);
+
+		redirect('./user');
+
+	}
 
 
 

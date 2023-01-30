@@ -84,7 +84,7 @@
 								 <i class="bi bi-journal-bookmark-fill"></i>
 							 </div>
 							 <div class="card-body">
-								 <textarea name="anotacao" id="note" cols="30" rows="10" placeholder="Adicione suas anotações aqui..."></textarea>
+								 <textarea name="anotacao" id="note" cols="30" rows="10" placeholder="Adicione suas anotações aqui..."><?php echo $textbox[0]->bloco;?></textarea>
 							 </div>
 						 </div>
 					 </div>
