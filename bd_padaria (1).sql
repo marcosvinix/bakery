@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30-Jan-2023 às 05:31
+-- Tempo de geração: 30-Jan-2023 às 06:21
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 7.4.27
 
@@ -84,20 +84,20 @@ CREATE TABLE `estoque` (
 --
 
 INSERT INTO `estoque` (`id_produto`, `descricao_produto_estoque`, `quantidade_disponivel`, `validade_lote`, `tipo_produto`, `medida_produto_estoque`, `quantidade_minima_produto`, `quantidade_maxima_produto`, `ignorado`, `id_funcionario`) VALUES
-(1, 'farinha de trigo', 750, '10/12/2023', 'grão', 'grama', 500, 10000, 0, 1),
+(1, 'farinha de trigo', 450, '10/12/2023', 'grão', 'grama', 500, 10000, 0, 1),
 (2, 'açúcar', 10000, '10/12/2023', 'grão', 'grama', 1, 10000, 0, 1),
 (3, 'cacau em pó', 10000, '10/12/2023', 'grão', 'grama', 1, 10000, 0, 1),
 (4, 'fermento em pó', 10000, '10/12/2023', 'grão', 'grama', 1, 10000, 0, 1),
-(5, 'sal', 750, '10/12/2023', 'grão', 'grama', 500, 10000, 0, 1),
+(5, 'sal', 710, '10/12/2023', 'grão', 'grama', 500, 10000, 0, 1),
 (6, 'bicarbonato de sódio', 10000, '10/12/2023', 'grão', 'grama', 1, 10000, 0, 1),
-(7, 'ovos', 10000, '10/12/2023', 'proteina', 'grama', 1, 10000, 0, 1),
-(8, 'óleo', 10000, '10/12/2023', 'líquido', 'grama', 1, 10000, 0, 1),
+(7, 'ovos', 9800, '10/12/2023', 'proteina', 'grama', 1, 10000, 0, 1),
+(8, 'óleo', 9800, '10/12/2023', 'líquido', 'grama', 1, 10000, 0, 1),
 (9, 'água', 10000, '10/12/2023', 'líquido', 'grama', 1, 10000, 0, 1),
 (10, 'essência de chocolate', 10000, '10/12/2023', 'grão', 'grama', 1, 10000, 0, 1),
 (11, 'nozes', 10000, '10/12/2023', 'grão', 'grama', 1, 10000, 0, 1),
-(12, 'polvinho doce', 10000, '10/12/2023', 'grão', 'grama', 1, 10000, 0, 1),
-(13, 'queijo minas', 10000, '10/12/2023', 'laticínios', 'grama', 1, 10000, 0, 1),
-(14, 'leite', 10000, '10/12/2023', 'laticínios', 'grama', 1, 10000, 0, 1),
+(12, 'polvinho doce', 9800, '10/12/2023', 'grão', 'grama', 1, 10000, 0, 1),
+(13, 'queijo minas', 9797, '10/12/2023', 'laticínios', 'grama', 1, 10000, 0, 1),
+(14, 'leite', 9800, '10/12/2023', 'laticínios', 'grama', 1, 10000, 0, 1),
 (15, 'manteiga', 10000, '10/12/2023', 'laticínios', 'grama', 1, 10000, 0, 1),
 (16, 'maçâ', 10000, '10/12/2023', 'fruta', 'grama', 1, 10000, 0, 1),
 (17, 'biscoito maisena', 10000, '10/12/2023', 'biscoito', 'grama', 1, 10000, 0, 1),
