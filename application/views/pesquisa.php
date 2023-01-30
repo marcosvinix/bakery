@@ -14,7 +14,7 @@
                 <img src="'.$receita->nome_imagem.'" height="180px" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">'.$receita->nome_receita.'</h5>
-                    <a href="./categorias/r/'.$title.'/'.$receita->nome_receita.'" class="btn btn-primary text-center">Preparar</a>
+                    <a href="./receitas/r/'.$title.'/'.$receita->nome_receita.'" class="btn btn-primary text-center">Preparar</a>
                 </div>
             </div>
              

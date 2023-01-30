@@ -4,8 +4,28 @@
 
 </head>
 
+<style>
+    .card-title{
+        color: #4E1784;
+    }
 
-<div class="container-fluid main-content d-flex flex-wrap justify-content-center">
+    .card-receita{
+        background-color: #F5ECFF;
+    }
+
+    .card-button{
+        background-color: #4E1784;
+        border: none;
+        width:100%;
+    }
+    .card-button:hover{
+        background-color: #4E1784;
+    }
+
+</style>
+
+
+<div class="container-fluid main-content d-flex flex-wrap">
             
     <?php
 
@@ -29,11 +49,11 @@
             foreach ($receitas as $receita) {
     
                 echo '
-                        <div class="card m-2" style="width: 18rem;">
+                        <div class="card m-2 card-receita" style="width: 18rem;">
                             <img src="'.$receita['nome_imagem'].'" height="180px" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">'.$receita['nome_receita'].'</h5>
-                                <a href="'.$title.'/'.$receita['nome_receita'].'" class="btn btn-primary text-center">Preparar</a>
+                                <a href="'.$title.'/'.$receita['nome_receita'].'" class="btn btn-primary text-center card-button">Preparar</a>
                             </div>
                         </div>
                 ';

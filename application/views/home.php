@@ -64,7 +64,7 @@
 								foreach ($favoritas as $receita) {
 									echo '
 										
-										<div class="swiper-slide card-category card-fav" id="'.$receita->nome_receita.'" style="background-image: url('.$receita->nome_imagem.')"><a style="text-decoration: none;" href="./categorias/r/'.$receita->nome_categoria.'/'.$receita->nome_receita.'"><p class="category-name">'.$receita->nome_receita.'</p></a></div>
+										<div class="swiper-slide card-category card-fav" id="'.$receita->nome_receita.'" style="background-image: url('.$receita->nome_imagem.')"><a style="text-decoration: none;" href="./receitas/r/'.$receita->nome_categoria.'/'.$receita->nome_receita.'"><p class="category-name">'.$receita->nome_receita.'</p></a></div>
 
 									';
 								}
@@ -118,6 +118,7 @@ var swiper = new Swiper(".mySwiper", {
       prevEl: ".swiper-button-prev",
     },
   });
+
 
 
 
