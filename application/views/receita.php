@@ -119,8 +119,8 @@
                             <tr class="ingredients">
                                 <td class="text-center name-ingredient" id="'.$ingrediente->nome.'">'.ucfirst($ingrediente->name).'</td>
                                 <input style="display: none;" type="text" name="ids[]" value="'.$ingrediente->nome.'">
-                                <td class="text-center"><input class="input-number percent" style="width: 5vh;" max="100" min="0" type="number" value="'.$ingrediente->porcentagem.'"> %</td>
-                                <td class="text-center"><input class="input-number gramas" style="width: 5vh;" name="qntds[]" type="number" value="0"> g</td>
+                                <td class="text-center"><input class="input-number percent" style="width: 5vh;" max="100" min="0" type="number" step="0.01" value="'.$ingrediente->porcentagem.'"> %</td>
+                                <td class="text-center"><input class="input-number gramas" style="width: 5vh;" name="qntds[]" type="number" step="0.01" value="0"> g</td>
                             </tr>
                         ';
 
@@ -138,7 +138,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary btn-cancel" data-bs-dismiss="modal">Cancelar</button>
-        <input type="submit" class="btn btn-primary btn-confirm">
+        <input type="submit" class="btn btn-primary btn-confirm" value="Preparar">
         </form>
       </div>
     </div>
@@ -159,37 +159,29 @@
   gramas = document.querySelectorAll('.gramas');
 
 
-  for(let x of gramas){
-    
+  for(let i = 0; i < percents.length; i++){
+  percents[i].addEventListener('change', () => {
     base = 0;
-    x.addEventListener('change', () => {
-      
-      j = 0;
-
-      for(let i of percents){
-        console.log(gramas[0].value);
-        if(i.value == 100){
-          base = gramas[j].value/100;
-          break;
-        }
-        
-        j++;
-        
+    for(let j = 0; j < percents.length; j++){
+      if(percents[j].value == 100){
+        base = gramas[j].value/100;
+        break;
       }
-      
-  
-      j = 0;
-  
-      for(let i of gramas){
-      
-      i.value = percents[j].value*base;
-      j++;
-        
     }
-    
-    });
-    
-  }
+    for(let j = 0; j < gramas.length; j++){
+      gramas[j].value = (percents[j].value * base).toFixed(2);
+    }
+  });
+}
+
+for(let i = 0; i < gramas.length; i++){
+  gramas[i].addEventListener('change', () => {
+    base = gramas[i].value/percents[i].value;
+    for(let j = 0; j < gramas.length; j++){
+      gramas[j].value = (percents[j].value * base).toFixed(2);
+    }
+  });
+}
 
   z = 0;
   for(let i of names){
