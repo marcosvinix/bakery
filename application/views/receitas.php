@@ -36,8 +36,8 @@
                     <div class="card-body">
                     <h5 class="card-title">Ops...</h5>
                     <p class="card-text">Parece que você ainda não adicionou receitas a essa categoria!</p>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReceita">
-                        Launch demo modal
+                    <button type="button" class="btn btn-primary card-button float-middle" style="width: 30%;" data-bs-toggle="modal" data-bs-target="#addReceita">
+                        Adicionar Receita
                     </button>
                     </div>
                 </div>
